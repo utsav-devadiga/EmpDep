@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    tools:context=".screens.UserInfoFragment">
+
+
+    <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="12dp"
+        android:src="@drawable/ic_back"
+        app:tint="?android:textColorPrimary" />
+
+    <TextView
+        android:id="@+id/header_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_back"
+        android:layout_marginHorizontal="16dp"
+        android:fontFamily="@font/cereal_extrabold"
+        android:text="@string/let_s_create_your_profile"
+        android:textAppearance="@style/TextAppearance.Material3.DisplaySmall"
+        android:textColor="?android:textColorPrimary" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header_text"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="25dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/username_textInput_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/username"
+            android:textColorHint="@color/grey"
+            app:boxBackgroundColor="@color/primary_variant"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxStrokeColor="@drawable/textinputbordercolor"
+            app:boxStrokeWidth="2dp"
+            app:hintAnimationEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/username_textInput_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cereal_bold"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="18sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phone_textInput_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/username_textInput_layout"
+            android:layout_margin="16dp"
+            android:alpha="0.5"
+            android:hint="@string/phone"
+            android:maxLines="1"
+            app:boxBackgroundColor="@color/primary_variant"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:boxStrokeColor="@drawable/textinputbordercolor"
+            app:boxStrokeWidth="2dp"
+
+            app:hintAnimationEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone_textInput_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:fontFamily="@font/cereal_bold"
+                android:text="+91 1234567890"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="18sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/user_info_next_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_below="@id/phone_textInput_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/cardview_button_bg"
+            android:elevation="12dp"
+            android:orientation="vertical"
+            android:outlineAmbientShadowColor="@color/grey"
+            android:outlineSpotShadowColor="@color/grey"
+            tools:targetApi="p">
+
+            <TextView
+                android:id="@+id/user_info_next_btn_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginHorizontal="20dp"
+                android:fontFamily="@font/cereal_medium"
+                android:gravity="center"
+                android:paddingHorizontal="12sp"
+                android:paddingVertical="10sp"
+                android:text="@string/next"
+                android:textAllCaps="true"
+                android:textColor="?android:textColorPrimary"
+                android:visibility="visible" />
+
+            <ProgressBar
+                android:id="@+id/user_info_loader"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:layout_margin="10dp"
+                android:visibility="gone" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

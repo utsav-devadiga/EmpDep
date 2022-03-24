@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".account_screens.NoInternetActivity">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_connection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/connection" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/animation_connection"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/cereal_medium"
+        android:text="@string/no_internet"
+        android:textAllCaps="true"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/button_tryAgain"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/description"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/primary"
+        android:fontFamily="@font/cereal_medium"
+        android:text="Try again"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        app:icon="@drawable/ic_replay"
+        app:iconTint="@color/white" />
+
+</RelativeLayout>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.HomeFragment">
+
+    <ScrollView
+        android:id="@+id/MainViewScrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/user_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/cereal_regular"
+                android:text="Hi, User."
+                android:textColor="?android:textColorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/user_header_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/user_header"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/cereal_extrabold"
+                android:text="Where would you \nlike to go?"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/user_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/user_header_desc"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="15dp"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/cereal_regular"
+                android:gravity="center"
+                android:text="Mumbai, India"
+                android:textColor="?android:textColorPrimary"
+                app:drawableStartCompat="@drawable/ic_location" />
+
+            <EditText
+                android:id="@+id/search_place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/user_location"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/searchview_shape_view"
+                android:drawableStart="@drawable/ic_search_v1"
+                android:drawablePadding="12dp"
+                android:hint="@string/try_to_find_your_place"
+                android:maxLines="1"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="12dp"
+                android:textColorHint="#C4C4C4"
+                app:drawableTint="@color/mainTextColor" />
+
+            <LinearLayout
+
+                android:id="@+id/popular_destination_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/search_place"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/cereal_bold"
+                    android:text="@string/popular_destinations"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="18sp" />
+
+
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/places_cycle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/popular_destination_layout"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="2"
+                tools:listitem="@layout/places_item" />
+
+            <LinearLayout
+
+                android:id="@+id/more_to_explore_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/places_cycle"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/cereal_bold"
+                    android:text="@string/more_to_explore"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="18sp" />
+
+
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/api_places_cycle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/more_to_explore_header"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_places_api" />
+
+
+        </RelativeLayout>
+
+
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

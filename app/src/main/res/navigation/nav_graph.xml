@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.pro.empdep.screens.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_userInfoFragment"
+            app:destination="@id/userInfoFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_placesDetailsFragment"
+            app:destination="@id/placesDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.pro.empdep.screens.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/wishListFragment"
+        android:name="com.pro.empdep.screens.WishListFragment"
+        android:label="fragment_wish_list"
+        tools:layout="@layout/fragment_wish_list" >
+        <action
+            android:id="@+id/action_wishListFragment_to_placesDetailsFragment"
+            app:destination="@id/placesDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inboxFragment"
+        android:name="com.pro.empdep.screens.InboxFragment"
+        android:label="fragment_inbox"
+        tools:layout="@layout/fragment_inbox" >
+        <action
+            android:id="@+id/action_inboxFragment_to_placesDetailsFragment"
+            app:destination="@id/placesDetailsFragment" />
+        <action
+            android:id="@+id/action_inboxFragment_to_addFriendFragment"
+            app:destination="@id/addFriendFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tripsFragment"
+        android:name="com.pro.empdep.screens.TripsFragment"
+        android:label="fragment_trips"
+        tools:layout="@layout/fragment_trips" >
+        <action
+            android:id="@+id/action_tripsFragment_to_placesDetailsFragment"
+            app:destination="@id/placesDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userInfoFragment"
+        android:name="com.pro.empdep.screens.UserInfoFragment"
+        android:label="fragment_user_info"
+        tools:layout="@layout/fragment_user_info" >
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/placesDetailsFragment"
+        android:name="com.pro.empdep.screens.PlacesDetailsFragment"
+        android:label="fragment_places_details"
+        tools:layout="@layout/fragment_places_details" />
+    <fragment
+        android:id="@+id/addFriendFragment"
+        android:name="com.pro.empdep.screens.AddFriendFragment"
+        android:label="fragment_add_friend"
+        tools:layout="@layout/fragment_add_friend" />
+</navigation>

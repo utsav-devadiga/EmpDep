@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_place_card"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/search_place"
+    android:layout_margin="12dp"
+    style="?attr/materialCardViewElevatedStyle"
+    app:cardElevation="12dp"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:layout_width="212dp"
+        android:layout_height="322dp">
+
+        <ImageView
+            android:scaleType="centerCrop"
+            android:id="@+id/place_item_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/places_image"
+            android:src="@drawable/place" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            style="?attr/materialCardViewFilledStyle"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/place_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/cereal_bold"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="Goa" />
+
+                <TextView
+                    android:id="@+id/place_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/cereal_bold"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="₹ 2500" />
+
+                <LinearLayout
+                    android:id="@+id/desc_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/place_name"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:textColor="?android:textColorSecondary"
+                        android:id="@+id/place_ratings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="6dp"
+                        android:fontFamily="@font/cereal_regular"
+                        app:drawableStartCompat="@drawable/ic_star"
+                        tools:text="4.5 ratings" />
+
+                    <TextView
+                        android:textColor="?android:textColorSecondary"
+                        android:id="@+id/place_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="6dp"
+                        android:fontFamily="@font/cereal_regular"
+                        app:drawableStartCompat="@drawable/ic_location_desc"
+                        tools:text="Goa, India" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="?attr/materialCardViewFilledStyle"
+                        android:layout_marginTop="5dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:background="@drawable/button_gradient">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="@font/cereal_medium"
+                                android:text="@string/more_details"
+                                android:textColor="@color/more_details_color" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>
