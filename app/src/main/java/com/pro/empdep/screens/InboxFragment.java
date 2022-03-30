@@ -4,16 +4,24 @@ import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.pro.empdep.R;
 import com.pro.empdep.databinding.FragmentInboxBinding;
+import com.pro.empdep.model.User;
+import com.pro.empdep.viewmodel.FriendsViewModel;
+import com.pro.empdep.viewmodel.UserViewModel;
 
 
 public class InboxFragment extends Fragment {
@@ -21,6 +29,7 @@ public class InboxFragment extends Fragment {
     View view;
     FragmentInboxBinding binding;
     NavController navController;
+    FriendsViewModel viewModel;
 
 
     public InboxFragment() {
@@ -51,19 +60,42 @@ public class InboxFragment extends Fragment {
         binding = FragmentInboxBinding.inflate(inflater, container, false);
         view = binding.getRoot();
 
+        viewModel = new ViewModelProvider(this).get(FriendsViewModel.class);
+
         //to navigate
         NavHostFragment navHostFragment = (NavHostFragment) requireActivity().getSupportFragmentManager()
                 .findFragmentById(R.id.nav_host_fragment);
         navController = navHostFragment.getNavController();
 
-        NavDirections actions = InboxFragmentDirections.actionInboxFragmentToAddFriendFragment();
 
-        binding.fabAddFriends.setOnClickListener(view -> navController.navigate(actions));
+        binding.fabAddFriends.setOnClickListener(view -> {
+            FriendDialogueMenu menu = new FriendDialogueMenu(getActivity(),navHostFragment);
+            menu.showMenu();
+        });
+
+        SpannableString content = new SpannableString("New Request (1)");
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        binding.newInboxRequest.setText(content);
+
+        binding.newInboxRequest.setOnClickListener(view1 -> {
+            NavDirections actions = InboxFragmentDirections.actionInboxFragmentToFriendRequestFragment();
+            navController.navigate(actions);
+        });
 
         //handle Navigation
         backPress();
+        getTotalPendingRequest();
 
         return view;
+    }
+
+    private void getTotalPendingRequest() {
+        viewModel.getCurrentUser().observe(getViewLifecycleOwner(), user -> {
+
+            SpannableString content = new SpannableString("New Request (" + String.valueOf(user.getFriendReq().size() + user.getGroupReq().size()) + ")");
+            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+            binding.newInboxRequest.setText(content);
+        });
     }
 
     private void backPress() {

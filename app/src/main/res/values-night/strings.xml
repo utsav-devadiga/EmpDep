@@ -61,4 +61,8 @@
     <string name="default_notification_channel_id">Firebase Channel</string>
     <string name="add_friend_message">You have new friend request!</string>
     <string name="search_conversations">Search conversations</string>
+    <string name="friend_request">Friend Request</string>
+    <string name="create_group">create group</string>
+    <string name="new_chat">new chat</string>
+    <string name="you_don_t_have_any_friends">You don\'t have any friends</string>
 </resources>

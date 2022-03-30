@@ -63,20 +63,22 @@ public class PlacesApiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(((PlacesApiViewHolder) holder).placeImage);
 
+            String cityName = addresses.get(0).getSubLocality();
+            String stateName = addresses.get(0).getLocality();
+            String countryName = addresses.get(0).getCountryName();
+            ((PlacesApiViewHolder) holder).placeName.setText(placesArrayList.get(position).getName());
+            ((PlacesApiViewHolder) holder).placesLocation.setText(cityName + ", " + stateName);
+
+            ((PlacesApiViewHolder) holder).wishListAnimation.setOnClickListener(v -> {
+                ((PlacesApiViewHolder) holder).wishListAnimation.setMaxFrame(51);
+                ((PlacesApiViewHolder) holder).wishListAnimation.playAnimation();
+            });
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        String cityName = addresses.get(0).getSubLocality();
-        String stateName = addresses.get(0).getLocality();
-        String countryName = addresses.get(0).getCountryName();
-        ((PlacesApiViewHolder) holder).placeName.setText(placesArrayList.get(position).getName());
-        ((PlacesApiViewHolder) holder).placesLocation.setText(cityName + ", " + stateName);
 
-        ((PlacesApiViewHolder) holder).wishListAnimation.setOnClickListener(v -> {
-            ((PlacesApiViewHolder) holder).wishListAnimation.setMaxFrame(51);
-            ((PlacesApiViewHolder) holder).wishListAnimation.playAnimation();
-        });
 
     }
 

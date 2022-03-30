@@ -27,7 +27,7 @@
                 android:src="@drawable/ic_close"
                 app:tint="@color/mainTextColor" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/friend_image_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -36,13 +36,20 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/profile_shaper">
 
+                <com.airbnb.lottie.LottieAnimationView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/loading" />
+
                 <ImageView
                     android:id="@+id/friend_image"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:src="@drawable/profile" />
+                    />
 
-            </LinearLayout>
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/friend_user_name"

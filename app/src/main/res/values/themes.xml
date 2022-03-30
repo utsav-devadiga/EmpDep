@@ -11,6 +11,8 @@
         <item name="colorPrimaryContainer">@color/primary_variant</item>
         <item name="colorOnPrimaryContainer">@color/primary</item>
 
+
+
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/primary</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -31,5 +33,6 @@
         <item name="cornerSize">8dp</item>
 
     </style>
+
 
 </resources>

@@ -164,8 +164,6 @@ public class AddFriendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
                         db.collection(Credentials.USER).document(users.get(holder.getAdapterPosition()).getId()).update("friendReq", FieldValue.arrayUnion(mAuth.getCurrentUser().getUid())).addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
-                                //todo send Notification
-
                                 NotificationBody notificationBody = new NotificationBody(deviceToken, new NotificationContent(CurrentUser.getUserName() + " sent you a friend request!", ""));
                                 friendRequestClient.sendFriendRequestNotification(notificationBody).enqueue(new Callback<JsonObject>() {
                                     @Override
