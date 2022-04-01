@@ -73,9 +73,7 @@ public class InboxFragment extends Fragment {
             menu.showMenu();
         });
 
-        SpannableString content = new SpannableString("New Request (1)");
-        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-        binding.newInboxRequest.setText(content);
+
 
         binding.newInboxRequest.setOnClickListener(view1 -> {
             NavDirections actions = InboxFragmentDirections.actionInboxFragmentToFriendRequestFragment();

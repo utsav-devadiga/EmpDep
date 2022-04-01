@@ -33,10 +33,13 @@
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/emp_info_dialog.xml" value="0.20520833333333333" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_add_friend.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_auth.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_creat_group.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_dependant_fragmet.xml" value="0.18" />
-        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_friend_request.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_friend_request.xml" value="0.22" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_friend_request_item.xml" value="0.19010416666666666" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_friends_list_bottom_sheet.xml" value="0.30344202898550726" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_friends_list_bottom_sheet_list_dialog_item.xml" value="0.30052083333333335" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_group_request_item.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_inbox.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_profile.xml" value="0.16" />
@@ -46,9 +49,12 @@
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/friend_bottom_sheet.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/friend_item.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/friend_menu_dialog.xml" value="0.5" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/friend_request_fragment_item.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/friend_self_item.xml" value="0.21510416666666668" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/group_creation_bottom_sheet.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/group_request_fragment_item.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_inbox.xml" value="0.5" />
-        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_places_api.xml" value="0.5" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_places_api.xml" value="0.67" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/places_item.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/search_friend_item.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/search_friend_item_accept_reject.xml" value="0.36666666666666664" />
@@ -75,5 +81,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.22" />
+      </ProjectState>
+    </option>
   </component>
 </project>

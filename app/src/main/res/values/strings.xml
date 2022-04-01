@@ -70,5 +70,7 @@
     <string name="create_group">create group</string>
     <string name="new_chat">new chat</string>
     <string name="you_don_t_have_any_friends">You don\'t have any friends</string>
+    <string name="search_for_groups">Search for groups</string>
+    <string name="request">Requests</string>
 
 </resources>

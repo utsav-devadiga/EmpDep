@@ -97,7 +97,7 @@
 
         <RelativeLayout
             android:id="@+id/user_info_next_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_below="@id/phone_textInput_layout"
             android:layout_centerHorizontal="true"

@@ -87,7 +87,7 @@ public class UserInfoFragment extends Fragment {
         });
         binding.userInfoNextBtn.setOnClickListener(view -> {
 
-
+showLoading();
             binding.usernameTextInputLayout.setError(null);
             String username = binding.usernameTextInputLayout.getEditText().getText().toString().trim();
             if (!username.equals("")) {
@@ -119,8 +119,9 @@ public class UserInfoFragment extends Fragment {
     }
 
     public void showLoading() {
-        binding.userInfoLoader.setVisibility(View.VISIBLE);
         binding.userInfoNextBtnText.setVisibility(View.GONE);
+        binding.userInfoLoader.setVisibility(View.VISIBLE);
+
     }
 
     public void hideLoading() {

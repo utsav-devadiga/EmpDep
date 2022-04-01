@@ -13,6 +13,9 @@ public class Message implements Parcelable {
     String timestamp;
     String message_id;
 
+    public Message() {
+    }
+
     public Message(String message, int message_type, String sent_by, ArrayList<String> seen_by, String timestamp, String message_id) {
         this.message = message;
         this.message_type = message_type;

@@ -18,6 +18,18 @@
         android:layout_height="wrap_content">
 
         <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loadingAnimation"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="6dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading" />
+
+        <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/wishListAnimation"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -37,12 +49,12 @@
             android:layout_margin="8dp"
             android:orientation="horizontal">
 
+
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/places_image"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/place"
                 app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.roundedCornerImage" />
 
             <LinearLayout
@@ -74,7 +86,6 @@
                     tools:text="Juhu, Mumbai" />
 
             </LinearLayout>
-
 
 
         </LinearLayout>

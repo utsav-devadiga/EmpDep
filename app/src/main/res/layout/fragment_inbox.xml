@@ -39,7 +39,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginHorizontal="12dp"
             android:fontFamily="@font/cereal_medium"
-            tools:text="New Request (1)" />
+           />
 
         <EditText
             android:id="@+id/inbox_search"
