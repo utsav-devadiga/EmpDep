@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.pro.empdep.model.Group;
 import com.pro.empdep.model.User;
 import com.pro.empdep.repo.FriendsRepository;
 
@@ -21,6 +22,8 @@ public class FriendsViewModel extends AndroidViewModel {
     private LiveData<List<String>> pendingFriendRequest;
     private LiveData<User> currentUser;
     private LiveData<List<String>> friends;
+    private LiveData<List<Group>> inboxList;
+
 
     public FriendsViewModel(@NonNull Application application) {
         super(application);
@@ -29,6 +32,7 @@ public class FriendsViewModel extends AndroidViewModel {
         this.pendingFriendRequest = friendsRepository.getPendingFriendRequest();
         this.currentUser = friendsRepository.getCurrentUser();
         this.friends = friendsRepository.getAllFriends();
+
     }
 
     public LiveData<List<User>> getAllUsersLiveData() {
@@ -46,6 +50,10 @@ public class FriendsViewModel extends AndroidViewModel {
 
     public LiveData<List<String>> getFriends() {
         return friends;
+    }
+
+    public LiveData<List<Group>> getInbox(List<String> groups){
+        return friendsRepository.getInboxList(groups);
     }
 
 }

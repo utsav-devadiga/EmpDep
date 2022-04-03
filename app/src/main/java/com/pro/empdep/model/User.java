@@ -58,16 +58,9 @@ public class User implements Parcelable {
         }
     };
 
+
     public String getPhoneNumber() {
         return phoneNumber;
-    }
-
-    public String getDevice() {
-        return device;
-    }
-
-    public void setDevice(String device) {
-        this.device = device;
     }
 
     public void setPhoneNumber(String phoneNumber) {
@@ -84,38 +77,6 @@ public class User implements Parcelable {
 
     public String getId() {
         return id;
-    }
-
-    public List<String> getFriends() {
-        return friends;
-    }
-
-    public void setFriends(List<String> friends) {
-        this.friends = friends;
-    }
-
-    public List<String> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(List<String> groups) {
-        this.groups = groups;
-    }
-
-    public List<String> getGroupReq() {
-        return groupReq;
-    }
-
-    public void setGroupReq(List<String> groupReq) {
-        this.groupReq = groupReq;
-    }
-
-    public List<String> getFriendReq() {
-        return friendReq;
-    }
-
-    public void setFriendReq(List<String> friendReq) {
-        this.friendReq = friendReq;
     }
 
     public void setId(String id) {
@@ -136,6 +97,46 @@ public class User implements Parcelable {
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+    public List<String> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(List<String> friends) {
+        this.friends = friends;
+    }
+
+    public List<String> getFriendReq() {
+        return friendReq;
+    }
+
+    public void setFriendReq(List<String> friendReq) {
+        this.friendReq = friendReq;
+    }
+
+    public String getDevice() {
+        return device;
+    }
+
+    public void setDevice(String device) {
+        this.device = device;
+    }
+
+    public List<String> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<String> groups) {
+        this.groups = groups;
+    }
+
+    public List<String> getGroupReq() {
+        return groupReq;
+    }
+
+    public void setGroupReq(List<String> groupReq) {
+        this.groupReq = groupReq;
     }
 
     @Override

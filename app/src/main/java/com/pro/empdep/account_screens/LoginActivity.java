@@ -20,6 +20,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
@@ -30,7 +32,10 @@ import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.pro.empdep.R;
+import com.pro.empdep.firebase.Credentials;
 import com.pro.empdep.firebase.RandomPhotoUrlGenerator;
 import com.pro.empdep.model.User;
 import com.pro.empdep.viewmodel.UserViewModel;
@@ -53,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView reSendOtp, otpSentTo;
     LottieAnimationView otp_animation, number_animation;
     UserViewModel userViewModel;
+    String device = "";
 
 
     @Override
@@ -249,6 +255,19 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             });
 
+                        } else {
+
+                            FirebaseMessaging.getInstance().getToken().addOnCompleteListener(deviceTask -> {
+                                if (deviceTask.isSuccessful()) {
+                                    device = deviceTask.getResult();
+                                } else {
+                                    device = "";
+                                }
+                                Log.d("DEVICE-TOKEN", "onCreateView: " + device);
+                            }).addOnCompleteListener(task1 -> {
+                                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                db.collection(Credentials.USER).document(FirebaseAuth.getInstance().getCurrentUser().getUid()).update("device", device);
+                            });
                         }
                         homeIntent.putExtra("isNewUser", isNew);
                         homeIntent.putExtra("phoneNumber", phone_number);
@@ -286,6 +305,8 @@ public class LoginActivity extends AppCompatActivity {
             view = new View(activity);
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
+
     }
 
 }

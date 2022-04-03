@@ -11,15 +11,19 @@ import android.view.ViewGroup;
 
 import com.pro.empdep.R;
 import com.pro.empdep.adapters.FriendRequestAdapter;
+import com.pro.empdep.adapters.GroupRequestAdapter;
 import com.pro.empdep.databinding.FragmentGroupRequestItemBinding;
 import com.pro.empdep.model.User;
 import com.pro.empdep.viewmodel.FriendsViewModel;
+import com.pro.empdep.viewmodel.GroupViewModel;
 
 public class GroupRequestFragmentItem extends Fragment {
 
 
     FragmentGroupRequestItemBinding binding;
     View view;
+    GroupViewModel viewModel;
+    GroupRequestAdapter adapter;
 
 
     public GroupRequestFragmentItem() {
@@ -51,17 +55,15 @@ public class GroupRequestFragmentItem extends Fragment {
         view = binding.getRoot();
 
 
-        /*viewModel = new ViewModelProvider(this).get(FriendsViewModel.class);
+        viewModel = new ViewModelProvider(this).get(GroupViewModel.class);
 
 
-        viewModel.getPendingFriendRequest().observe(getViewLifecycleOwner(), friendRequest -> {
-            User currentUser;
-            viewModel.getCurrentUser().observe(getViewLifecycleOwner(), user -> {
-                adapter = new FriendRequestAdapter(friendRequest, getContext(), user);
-                binding.friendRequestCycle.setAdapter(adapter);
-            });
+        viewModel.getGroupPendingRequest().observe(getViewLifecycleOwner(), groupRequest -> {
 
-        });*/
+            adapter = new GroupRequestAdapter(groupRequest, getContext());
+            binding.groupInviteCycle.setAdapter(adapter);
+
+        });
         return view;
     }
 }

@@ -10,18 +10,29 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.pro.empdep.R;
+import com.pro.empdep.adapters.InboxAdapter;
 import com.pro.empdep.databinding.FragmentInboxBinding;
+import com.pro.empdep.model.Group;
 import com.pro.empdep.model.User;
 import com.pro.empdep.viewmodel.FriendsViewModel;
 import com.pro.empdep.viewmodel.UserViewModel;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 
 public class InboxFragment extends Fragment {
@@ -30,7 +41,7 @@ public class InboxFragment extends Fragment {
     FragmentInboxBinding binding;
     NavController navController;
     FriendsViewModel viewModel;
-
+    InboxAdapter adapter;
 
     public InboxFragment() {
         // Required empty public constructor
@@ -69,10 +80,9 @@ public class InboxFragment extends Fragment {
 
 
         binding.fabAddFriends.setOnClickListener(view -> {
-            FriendDialogueMenu menu = new FriendDialogueMenu(getActivity(),navHostFragment);
+            FriendDialogueMenu menu = new FriendDialogueMenu(getActivity(), navHostFragment);
             menu.showMenu();
         });
-
 
 
         binding.newInboxRequest.setOnClickListener(view1 -> {
@@ -93,8 +103,25 @@ public class InboxFragment extends Fragment {
             SpannableString content = new SpannableString("New Request (" + String.valueOf(user.getFriendReq().size() + user.getGroupReq().size()) + ")");
             content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
             binding.newInboxRequest.setText(content);
+           getInboxList(user);
         });
     }
+
+    private void getInboxList(User user) {
+        viewModel.getInbox(user.getGroups()).observe(getViewLifecycleOwner(), groups -> {
+            Log.d("INBOX", "getTotalPendingRequest: " + groups.size());
+            Collections.sort(groups, (group1, group2) -> {
+                Long timestamp1 = Long.parseLong(group1.getTimestamp());
+                Long timestamp2 = Long.parseLong(group2.getTimestamp());
+
+                return timestamp2.compareTo(timestamp1);
+            });
+            adapter = new InboxAdapter(groups, getContext());
+            binding.inboxCycle.setAdapter(adapter);
+            binding.inboxCycle.addItemDecoration(new DividerItemDecoration(requireContext(), LinearLayout.VERTICAL));
+        });
+    }
+
 
     private void backPress() {
         // This callback will only be called when MyFragment is at least Started.
@@ -106,7 +133,5 @@ public class InboxFragment extends Fragment {
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
         callback.setEnabled(true);
-
-
     }
 }

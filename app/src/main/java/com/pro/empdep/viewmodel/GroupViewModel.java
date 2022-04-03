@@ -11,13 +11,13 @@ import com.pro.empdep.model.FriendList;
 import com.pro.empdep.repo.GroupRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GroupViewModel extends AndroidViewModel {
     GroupRepository groupRepository;
     private LiveData<Boolean> groupCreatedData;
-
-    private  MutableLiveData<FriendList> friends ;
-
+    private MutableLiveData<FriendList> friends;
+    private LiveData<List<String>> groupPendingRequest;
 
 
     public GroupViewModel(@NonNull Application application) {
@@ -41,4 +41,11 @@ public class GroupViewModel extends AndroidViewModel {
     public void setFriends(MutableLiveData<FriendList> friends) {
         this.friends = friends;
     }
+
+
+    public LiveData<List<String>> getGroupPendingRequest() {
+        return groupRepository.getPendingRequest();
+    }
+
+
 }

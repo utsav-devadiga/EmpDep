@@ -20,7 +20,7 @@ public class FriendDialogueMenu {
 
     private final Activity activity;
     private AlertDialog view;
-    MaterialCardView addFriend, createGroup, newChat;
+    MaterialCardView addFriend, createGroup;
     NavController navController;
     NavHostFragment navHostFragment;
 
@@ -47,7 +47,7 @@ public class FriendDialogueMenu {
 
         addFriend = view.findViewById(R.id.add_friend_btn);
         createGroup = view.findViewById(R.id.create_group_btn);
-        newChat = view.findViewById(R.id.new_convo_btn);
+
 
 
         addFriend.setOnClickListener(v -> {
@@ -63,11 +63,6 @@ public class FriendDialogueMenu {
             view.dismiss();
         });
 
-        newChat.setOnClickListener(v -> {
-            NavDirections actions = InboxFragmentDirections.actionInboxFragmentToFriendBottomSheet();
-            navController.navigate(actions);
-            view.dismiss();
-        });
 
 
 

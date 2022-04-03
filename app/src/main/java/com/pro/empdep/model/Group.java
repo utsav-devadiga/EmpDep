@@ -21,6 +21,9 @@ public class Group implements Parcelable {
     String group_name;
     String group_admin;
 
+    public Group() {
+    }
+
     public Group(String group_id, int group_type, String created_by, String last_message, String last_message_sent_by, ArrayList<String> seen_by, ArrayList<String> users, ArrayList<String> pendingRequest, ArrayList<String> pendingSentRequest, String timestamp, String group_picture, String group_name, String group_admin) {
         this.group_id = group_id;
         this.group_type = group_type;

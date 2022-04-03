@@ -3,6 +3,7 @@ package com.pro.empdep.repo;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -10,8 +11,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.gson.JsonObject;
 import com.pro.empdep.apiClients.FriendRequest;
 import com.pro.empdep.apiClients.FriendRequestClient;
@@ -52,8 +55,10 @@ public class GroupRepository {
         String currentUserId = auth.getCurrentUser().getUid();
         String groupId = db.collection(Credentials.GROUP).document().getId();
         RandomPhotoUrlGenerator randomPhotoUrlGenerator = new RandomPhotoUrlGenerator();
-        String groupPic = randomPhotoUrlGenerator.randomUsernameExtension();
-        Group group = new Group(groupId, 0, currentUserId, "NO-MESSAGES", "NO-MESSAGES", new ArrayList<String>(), new ArrayList<String>(), groupMembers, groupMembers, String.valueOf(System.currentTimeMillis()), groupPic, groupName, currentUserId);
+        String groupPic = "https://avatars.dicebear.com/api/identicon/" + (new RandomPhotoUrlGenerator().randomUsernameExtension()) + ".png?colors=teal";
+        ArrayList<String> userList = new ArrayList<>();
+        userList.add(auth.getCurrentUser().getUid());
+        Group group = new Group(groupId, 0, currentUserId, "NO-MESSAGES", "NO-MESSAGES", new ArrayList<String>(),userList , groupMembers, groupMembers, String.valueOf(System.currentTimeMillis()), groupPic, groupName, currentUserId);
         db.collection(Credentials.GROUP).document(groupId).set(group).addOnCompleteListener(task -> {
             //need to add the an array of group names so that while creating groups we can validate
             if (task.isSuccessful()) {
@@ -91,7 +96,11 @@ public class GroupRepository {
                             //adds group invite to users node
                             db.collection(Credentials.USER).document(user).update("groupReq", FieldValue.arrayUnion(groupId));
 
+
+
                         }
+                        //adds self too
+                        db.collection(Credentials.USER).document(auth.getCurrentUser().getUid()).update("groups",FieldValue.arrayUnion(groupId));
                         GROUP_STATUS.setValue(true);
                     } else {
                         GROUP_STATUS.setValue(false);
@@ -130,5 +139,30 @@ public class GroupRepository {
 
         return GROUP_VALIDATION;
     }
+
+    public LiveData<List<String>> getPendingRequest() {
+        final MutableLiveData<List<String>> pendingRequestList = new MutableLiveData<>();
+
+        db.collection(Credentials.USER).document(auth.getCurrentUser().getUid()).addSnapshotListener((value, error) -> {
+            if (error == null) {
+
+                if (value != null) {
+
+                    User user = value.toObject(User.class);
+                    pendingRequestList.setValue(user.getGroupReq());
+
+                } else {
+                    pendingRequestList.setValue(null);
+                }
+
+            } else {
+                //error
+                pendingRequestList.setValue(null);
+            }
+        });
+
+        return pendingRequestList;
+    }
+
 }
 

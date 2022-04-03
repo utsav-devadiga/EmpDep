@@ -18,6 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.pro.empdep.firebase.Credentials;
+import com.pro.empdep.model.Group;
 import com.pro.empdep.model.User;
 import com.pro.empdep.places.response.PlacesResponse;
 
@@ -72,20 +73,18 @@ public class FriendsRepository {
         return pendingRequest;
     }
 
-
     public MutableLiveData<User> getCurrentUser() {
         final MutableLiveData<User> user = new MutableLiveData<>();
-        db.collection(Credentials.USER).document(auth.getCurrentUser().getUid()).get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                Log.d(TAG, "getSingleUser: " + task.getResult().toObject(User.class));
-                user.setValue(task.getResult().toObject(User.class));
+        db.collection(Credentials.USER).document(auth.getCurrentUser().getUid()).addSnapshotListener((value, error) -> {
+            if (error == null) {
+                Log.d(TAG, "getSingleUser: " + value.toObject(User.class));
+                user.setValue(value.toObject(User.class));
             } else {
                 user.setValue(null);
             }
         });
         return user;
     }
-
 
     public LiveData<User> getUsersData(String id) {
         final MutableLiveData<User> usersData = new MutableLiveData<>();
@@ -101,12 +100,10 @@ public class FriendsRepository {
     }
 
 
-
     public LiveData<List<String>> getAllFriends() {
         final MutableLiveData<List<String>> friendsListID = new MutableLiveData<>();
 
         db.collection(Credentials.USER).document(auth.getCurrentUser().getUid()).addSnapshotListener((value, error) -> {
-
             if (error != null) {
                 friendsListID.setValue(null);
             } else {
@@ -116,6 +113,31 @@ public class FriendsRepository {
         });
 
         return friendsListID;
+    }
+
+    public LiveData<List<Group>> getInboxList(List<String> groupList) {
+        Log.d(TAG, "getInboxList: " + groupList.size());
+        final MutableLiveData<List<Group>> inboxList = new MutableLiveData<>();
+        final ArrayList<Group> subGroupList = new ArrayList<>();
+        for (String groupid : groupList) {
+            Log.d(TAG, "Selected group: " + groupid);
+            db.collection(Credentials.GROUP).document(groupid).get().addOnCompleteListener(task -> {
+                Log.d(TAG, "getting group details: " + task.getResult().toObject(Group.class).toString());
+                if (task.isSuccessful()) {
+                    Group group = task.getResult().toObject(Group.class);
+                    subGroupList.add(group);
+                    Log.d(TAG, "added group details of " + groupid);
+                    inboxList.postValue(subGroupList);
+                } else {
+                    Log.e(TAG, "getInboxList: error");
+                    inboxList.setValue(null);
+                }
+            });
+            Log.d(TAG, "posted in view-model");
+            inboxList.postValue(subGroupList);
+        }
+        return inboxList;
+
     }
 
 }
