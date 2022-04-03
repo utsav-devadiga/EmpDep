@@ -26,14 +26,15 @@ public class MainActivity extends AppCompatActivity {
         // Handle the splash screen transition.
         SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
+        //notification initialization
         FirebaseMessaging.getInstance().setAutoInitEnabled(true);
-
-
         setContentView(R.layout.activity_main);
+
         splashAnimation = findViewById(R.id.splash_animation);
 
 
         auth = FirebaseAuth.getInstance();
+
         if (auth.getCurrentUser() != null) {
             splashScreen.setKeepOnScreenCondition(() -> true);
             Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);

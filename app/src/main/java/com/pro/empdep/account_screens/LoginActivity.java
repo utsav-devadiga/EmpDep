@@ -3,6 +3,7 @@ package com.pro.empdep.account_screens;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
@@ -61,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
     String device = "";
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,8 +96,8 @@ public class LoginActivity extends AppCompatActivity {
             number_animation.playAnimation();
             if (phone_editText.getText().toString().isEmpty()) {
                 Snackbar snackbar = Snackbar
-                        .make(main_layout, "Phone Number cant be empty", Snackbar.LENGTH_SHORT);
-                snackbar.setBackgroundTint(getResources().getColor(R.color.red));
+                        .make(main_layout, "Phone Number can't be empty", Snackbar.LENGTH_SHORT);
+                snackbar.setBackgroundTint(ContextCompat.getColor(getApplicationContext(),R.color.red));
                 snackbar.show();
                 return;
             } else {
@@ -152,21 +154,21 @@ public class LoginActivity extends AppCompatActivity {
                 // for instance if the the phone number format is not valid.
                 Snackbar snackbar = Snackbar
                         .make(main_layout, "Something went wrong.", Snackbar.LENGTH_SHORT);
-                snackbar.setBackgroundTint(getResources().getColor(R.color.red));
+                snackbar.setBackgroundTint(ContextCompat.getColor(getApplicationContext(),R.color.red));
                 snackbar.show();
 
 
                 if (e instanceof FirebaseAuthInvalidCredentialsException) {
                     snackbar = Snackbar
                             .make(main_layout, "Something went wrong check the number", Snackbar.LENGTH_SHORT);
-                    snackbar.setBackgroundTint(getResources().getColor(R.color.red));
+                    snackbar.setBackgroundTint(ContextCompat.getColor(getApplicationContext(),R.color.red));
                     snackbar.show();
 
                 } else if (e instanceof FirebaseTooManyRequestsException) {
 
                     snackbar = Snackbar
                             .make(main_layout, "Too many request from this number", Snackbar.LENGTH_SHORT);
-                    snackbar.setBackgroundTint(getResources().getColor(R.color.red));
+                    snackbar.setBackgroundTint(ContextCompat.getColor(getApplicationContext(),R.color.red));
                     snackbar.show();
 
                 }

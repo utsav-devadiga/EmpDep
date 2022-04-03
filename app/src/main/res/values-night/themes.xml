@@ -51,4 +51,12 @@
         <item name="cornerSize">18dp</item>
     </style>
 
+
+    <style name="TabHeaders" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/cereal_medium</item>
+    </style>
+
+
+
 </resources>

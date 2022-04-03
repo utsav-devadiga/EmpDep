@@ -147,7 +147,6 @@ public class FriendBottomSheet extends BottomSheetDialogFragment implements Frie
                     adapter.notifyDataSetChanged();
                     binding.friendCycle.addItemDecoration(new DividerItemDecoration(requireContext(), LinearLayout.VERTICAL));
 
-
                 }
             }
         });
