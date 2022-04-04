@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_inboxFragment_to_friend_bottom_sheet"
             app:destination="@id/friend_bottom_sheet" />
+        <action
+            android:id="@+id/action_inboxFragment_to_messagesFragment"
+            app:destination="@id/messagesFragment" />
     </fragment>
     <fragment
         android:id="@+id/tripsFragment"
@@ -99,6 +102,15 @@
         android:name="com.pro.empdep.screens.GroupCreationBottomSheet"
         android:label="Groups"
         tools:layout="@layout/group_creation_bottom_sheet" />
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.pro.empdep.screens.MessagesFragment"
+        android:label="fragment_messages"
+        tools:layout="@layout/fragment_messages" >
+        <argument
+            android:name="group_id"
+            app:argType="string" />
+    </fragment>
 
 
 </navigation>

@@ -3,6 +3,8 @@ package com.pro.empdep.screens;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
@@ -20,9 +22,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.pro.empdep.R;
 import com.pro.empdep.adapters.InboxAdapter;
 import com.pro.empdep.databinding.FragmentInboxBinding;
+import com.pro.empdep.firebase.Credentials;
+import com.pro.empdep.interfaces.MessageOpener;
 import com.pro.empdep.model.Group;
 import com.pro.empdep.model.User;
 import com.pro.empdep.viewmodel.FriendsViewModel;
@@ -35,13 +47,17 @@ import java.util.Comparator;
 import java.util.List;
 
 
-public class InboxFragment extends Fragment {
+public class InboxFragment extends Fragment implements MessageOpener {
 
     View view;
     FragmentInboxBinding binding;
     NavController navController;
     FriendsViewModel viewModel;
     InboxAdapter adapter;
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    List<Group> group = new ArrayList<>();
 
     public InboxFragment() {
         // Required empty public constructor
@@ -94,8 +110,13 @@ public class InboxFragment extends Fragment {
         backPress();
         getTotalPendingRequest();
 
+
+
+
         return view;
     }
+
+
 
     private void getTotalPendingRequest() {
         viewModel.getCurrentUser().observe(getViewLifecycleOwner(), user -> {
@@ -103,12 +124,14 @@ public class InboxFragment extends Fragment {
             SpannableString content = new SpannableString("New Request (" + String.valueOf(user.getFriendReq().size() + user.getGroupReq().size()) + ")");
             content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
             binding.newInboxRequest.setText(content);
-           getInboxList(user);
+            getInboxList(user);
         });
     }
 
     private void getInboxList(User user) {
+
         viewModel.getInbox(user.getGroups()).observe(getViewLifecycleOwner(), groups -> {
+
             Log.d("INBOX", "getTotalPendingRequest: " + groups.size());
             Collections.sort(groups, (group1, group2) -> {
                 Long timestamp1 = Long.parseLong(group1.getTimestamp());
@@ -116,8 +139,9 @@ public class InboxFragment extends Fragment {
 
                 return timestamp2.compareTo(timestamp1);
             });
-            adapter = new InboxAdapter(groups, getContext());
+            adapter = new InboxAdapter(groups, getContext(), this);
             binding.inboxCycle.setAdapter(adapter);
+
             binding.inboxCycle.addItemDecoration(new DividerItemDecoration(requireContext(), LinearLayout.VERTICAL));
         });
     }
@@ -133,5 +157,18 @@ public class InboxFragment extends Fragment {
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), callback);
         callback.setEnabled(true);
+    }
+
+
+    @Override
+    public void onGroupClick(String id) {
+
+
+        NavDirections actions = InboxFragmentDirections.actionInboxFragmentToMessagesFragment(id);
+        navController.navigate(actions);
+        db.collection(Credentials.GROUP).document(id).update("seen_by", FieldValue.arrayUnion(mAuth.getCurrentUser().getUid()));
+
+
+
     }
 }

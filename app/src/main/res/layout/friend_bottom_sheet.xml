@@ -68,7 +68,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/cereal_bold"
-                android:text="@string/new_chat"
+                android:text="@string/new_group"
                 android:textAllCaps="true"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
 

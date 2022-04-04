@@ -77,4 +77,15 @@
         android:maxLines="1"
         tools:text="this is the text message" />
 
+
+    <ImageView
+        android:id="@+id/user_read"
+        android:layout_width="7dp"
+        android:layout_height="7dp"
+        android:layout_below="@id/inbox_user_time"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="30dp"
+       android:background="@drawable/read_item"
+        />
+
 </RelativeLayout>
