@@ -64,8 +64,10 @@
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/friend_request_fragment_item.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/friend_self_item.xml" value="0.21510416666666668" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/group_creation_bottom_sheet.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/group_item.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/group_request_fragment_item.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/group_request_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/group_selection_bottom_sheet.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_inbox.xml" value="0.67" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_places_api.xml" value="0.18" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/message_item_continue_incoming_normal.xml" value="1.0" />

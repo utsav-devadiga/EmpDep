@@ -64,7 +64,7 @@ public class GroupCreationBottomSheet extends BottomSheetDialogFragment {
             if (groupName.equals("")) {
                 binding.groupNameTextInputLayout.setError("Group name can't be empty");
             } else {
-                //todo create group and proper validation
+                //create group and proper validation
                 //done in text-watcher
                 createGroup(groupName);
             }

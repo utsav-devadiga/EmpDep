@@ -1,6 +1,7 @@
 package com.pro.empdep.screens;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
@@ -105,6 +106,23 @@ public class PlacesDetailsFragment extends Fragment implements PlacesDetails {
         viewModel = new ViewModelProvider(this).get(PlacesViewModel.class);
 
         view = binding.getRoot();
+
+
+        binding.suggestBtn.setOnClickListener(view -> {
+
+            SharedPreferences sharedPreferences = requireActivity().getSharedPreferences(Credentials.GROUP, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("place", placeId);
+            editor.apply();
+
+            NavHostFragment navHostFragment = (NavHostFragment) requireActivity().getSupportFragmentManager()
+                    .findFragmentById(R.id.nav_host_fragment);
+            navController = navHostFragment.getNavController();
+            NavDirections actions = PlacesDetailsFragmentDirections.actionPlacesDetailsFragmentToGroupSelectionBottomSheet();
+
+            navController.navigate(actions);
+
+        });
 
         return view;
     }

@@ -17,6 +17,7 @@ public class MessagesViewModel extends AndroidViewModel {
     MessageRepository messageRepository;
     private LiveData<List<Message>> messagesData = new MutableLiveData<>();
     private LiveData<Boolean> messageSent = new MutableLiveData<>();
+    private LiveData<Boolean> placeSent = new MutableLiveData<>();
 
     public MessagesViewModel(@NonNull Application application) {
         super(application);
@@ -33,6 +34,11 @@ public class MessagesViewModel extends AndroidViewModel {
     public LiveData<Boolean> sendNormalMessage(String groupId, String message) {
         messageSent = messageRepository.sendMessageNormal(groupId, message);
         return messageSent;
+    }
+
+    public LiveData<Boolean> sendPlaceSuggestion(String groupid, String placeid) {
+        placeSent = messageRepository.sendPlaceSuggestion(groupid, placeid);
+        return placeSent;
     }
 
 }

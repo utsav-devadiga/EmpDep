@@ -72,4 +72,29 @@ public class MessageRepository {
         });
         return messageSent;
     }
+
+    public LiveData<Boolean> sendPlaceSuggestion(String groupId, String placeid) {
+        final MutableLiveData<Boolean> messageSent = new MutableLiveData<>();
+        String currentUserId = mAuth.getCurrentUser().getUid();
+        String message_id = db.collection(Credentials.GROUP).document(groupId).collection(Credentials.MESSAGES).document().getId();
+        ArrayList<String> messageSeenBy = new ArrayList<>();
+        String timestamp = String.valueOf(System.currentTimeMillis());
+        messageSeenBy.add(currentUserId);
+        Message messageToSend = new Message(placeid, Credentials.MESSAGES_PLACE_SUGGESTION, currentUserId, messageSeenBy, timestamp, message_id, new ArrayList<String>(), new ArrayList<String>(), 0, 0, 0);
+        db.collection(Credentials.GROUP).document(groupId).collection(Credentials.MESSAGES).document(message_id).set(messageToSend).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                messageSent.setValue(true);
+                db.collection(Credentials.GROUP).document(groupId).update("last_message", "Sent a place");
+                db.collection(Credentials.GROUP).document(groupId).update("last_message_sent_by", currentUserId);
+                db.collection(Credentials.GROUP).document(groupId).update("timestamp", timestamp);
+                db.collection(Credentials.GROUP).document(groupId).update("seen_by", messageSeenBy);
+            } else {
+                messageSent.setValue(false);
+            }
+        });
+
+        return messageSent;
+    }
+
+
 }

@@ -82,6 +82,9 @@
         <action
             android:id="@+id/action_placesDetailsFragment_self"
             app:destination="@id/placesDetailsFragment" />
+        <action
+            android:id="@+id/action_placesDetailsFragment_to_group_selection_bottom_sheet"
+            app:destination="@id/group_selection_bottom_sheet" />
     </fragment>
     <fragment
         android:id="@+id/addFriendFragment"
@@ -119,5 +122,13 @@
             app:argType="string" />
     </fragment>
 
-
+    <dialog
+        android:id="@+id/group_selection_bottom_sheet"
+        android:name="com.pro.empdep.screens.GroupSelectionBottomSheet"
+        android:label="Groups"
+        tools:layout="@layout/group_selection_bottom_sheet" >
+        <action
+            android:id="@+id/action_group_selection_bottom_sheet_to_messagesFragment"
+            app:destination="@id/messagesFragment" />
+    </dialog>
 </navigation>
