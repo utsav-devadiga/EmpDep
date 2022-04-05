@@ -6,6 +6,9 @@ public class Credentials {
     public static String GROUP_VALIDATOR = "GROUP_VALIDATOR";
     public static String FRIENDS = "friends";
     public static String MESSAGES = "MESSAGES";
+    public static String WISH = "WISHLIST";
+    public static String USER_PREF = "USER_PREF";
+
 
 
     // MESSAGE-TYPE

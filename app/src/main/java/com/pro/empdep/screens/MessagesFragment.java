@@ -78,8 +78,7 @@ public class MessagesFragment extends Fragment {
         binding = FragmentMessagesBinding.inflate(inflater, container, false);
         view = binding.getRoot();
         viewModel = new ViewModelProvider(this).get(MessagesViewModel.class);
-        adapter = new MessageAdapter(messagesList, getContext());
-        binding.messageCycle.setAdapter(adapter);
+
 
         binding.buttonGchatSend.setOnClickListener(v -> {
             String message = binding.editGchatMessage.getText().toString().trim();
@@ -157,6 +156,8 @@ public class MessagesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         groupId = MessagesFragmentArgs.fromBundle(getArguments()).getGroupId();
         Log.d("GROUP", "onViewCreated: " + groupId);
+        adapter = new MessageAdapter(messagesList, getContext(),groupId);
+        binding.messageCycle.setAdapter(adapter);
         getMessage(groupId);
 
         db.collection(Credentials.GROUP).document(groupId).get().addOnCompleteListener(task -> {

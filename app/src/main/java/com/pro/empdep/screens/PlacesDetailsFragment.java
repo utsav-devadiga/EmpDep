@@ -48,6 +48,7 @@ import com.pro.empdep.places.adapters.PlacesApiAdapter;
 import com.pro.empdep.places.adapters.PlacesDetailsImageAdapter;
 import com.pro.empdep.places.constants.AppConstant;
 import com.pro.empdep.places.interfaces.PlacesDetails;
+import com.pro.empdep.places.interfaces.WishLists;
 import com.pro.empdep.places.model.PlacesModel;
 import com.pro.empdep.places.repo.PlacesRepo;
 import com.pro.empdep.places.viewmodel.PlacesViewModel;
@@ -56,7 +57,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class PlacesDetailsFragment extends Fragment implements PlacesDetails {
+public class PlacesDetailsFragment extends Fragment implements PlacesDetails, WishLists {
     FragmentPlacesDetailsBinding binding;
     View view;
     String placeId = "";
@@ -162,7 +163,7 @@ public class PlacesDetailsFragment extends Fragment implements PlacesDetails {
             binding.placesDetailsTitle.setText(place.getName());
             binding.placesDetailsAddress.setText(place.getAddress());
             binding.placesDetailRatings.setRating(Float.parseFloat(String.valueOf(place.getRating())));
-            placesApiAdapter = new PlacesApiAdapter(getContext(), placesArrayList, this);
+            placesApiAdapter = new PlacesApiAdapter(getContext(), placesArrayList, this,this);
             binding.thingsToDoCycle.setAdapter(placesApiAdapter);
             binding.thingsToDoHeader.setText(AppConstant.THINGS_TODO_QUERY + placeName);
             viewModel.getThingsToDoResponseLiveData(AppConstant.THINGS_TODO_QUERY + placeName).observe(getViewLifecycleOwner(), places -> {
@@ -243,5 +244,10 @@ public class PlacesDetailsFragment extends Fragment implements PlacesDetails {
         NavDirections actions = PlacesDetailsFragmentDirections.actionPlacesDetailsFragmentSelf(place_id);
 
         navController.navigate(actions);
+    }
+
+    @Override
+    public void onPlaceClick(PlacesModel placesModel) {
+
     }
 }

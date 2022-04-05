@@ -87,7 +87,7 @@ public class InboxFragment extends Fragment implements MessageOpener {
         binding = FragmentInboxBinding.inflate(inflater, container, false);
         view = binding.getRoot();
 
-
+        viewModel = new ViewModelProvider(this).get(FriendsViewModel.class);
 
         //to navigate
         NavHostFragment navHostFragment = (NavHostFragment) requireActivity().getSupportFragmentManager()

@@ -70,6 +70,9 @@
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/group_selection_bottom_sheet.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_inbox.xml" value="0.67" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_places_api.xml" value="0.18" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_places_api_wishlist_trips.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_suggest_place_outgoing.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_suggested_place_incoming.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/message_item_continue_incoming_normal.xml" value="1.0" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/message_item_incoming_normal.xml" value="0.67" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/message_item_normal.xml" value="0.36666666666666664" />
@@ -80,6 +83,7 @@
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/search_friend_item.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/search_friend_item_accept_reject.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/status_item.xml" value="0.9" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/user_preference.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/menu/bottom_nav_menu.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/menu/messages_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.221875" />

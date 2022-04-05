@@ -10,6 +10,7 @@ import java.util.List;
 
 public class PlacesModel implements Parcelable {
 
+
     @SerializedName("business_status")
     @Expose
     public String businessStatus;
@@ -43,6 +44,10 @@ public class PlacesModel implements Parcelable {
     @SerializedName("user_ratings_total")
     @Expose
     public Integer userRatingsTotal;
+
+
+    public PlacesModel() {
+    }
 
     protected PlacesModel(Parcel in) {
         businessStatus = in.readString();

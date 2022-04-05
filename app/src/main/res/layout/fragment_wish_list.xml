@@ -1,16 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.InboxFragment">
+    tools:context=".screens.WishListFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/inbox_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:src="@drawable/ic_close"
+            app:tint="@color/mainTextColor" />
+
+        <TextView
+            android:id="@+id/inbox_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/inbox_close"
+            android:layout_marginHorizontal="12dp"
+            android:fontFamily="@font/cereal_bold"
+            android:text="@string/wishlists"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/new_inbox_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/inbox_close"
+            android:layout_alignBaseline="@id/inbox_header"
+            android:layout_alignBottom="@+id/inbox_header"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="12dp"
+            android:fontFamily="@font/cereal_medium"
+            />
+
+        <EditText
+            android:id="@+id/inbox_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/inbox_header"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/searchview_shape_view"
+            android:drawableStart="@drawable/ic_search_v1"
+            android:drawablePadding="12dp"
+            android:fontFamily="@font/cereal_regular"
+            android:hint="@string/search_in_your_wishlist"
+            android:maxLines="1"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="12dp"
+            android:textColorHint="#C4C4C4"
+            app:drawableTint="@color/mainTextColor" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/wishlist_cycle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/inbox_search"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_places_api_wishlist_trips" />
+
+    </RelativeLayout>
 
 
-    <TextView
-        android:fontFamily="@font/cereal_medium"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="WISHLIST" />
-
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

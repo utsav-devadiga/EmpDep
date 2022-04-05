@@ -21,18 +21,15 @@ public class PlacesViewModel extends AndroidViewModel {
     public PlacesViewModel(@NonNull Application application) {
         super(application);
         placesRepo = new PlacesRepo();
-        this.placesResponseLiveData = placesRepo.getPlaces("beaches+in+mumbai", API_KEY);
-
-
     }
 
-    public LiveData<PlacesResponse> getPlacesResponseLiveData() {
-        return placesResponseLiveData;
+    public LiveData<PlacesResponse> getPlacesResponseLiveData(String query) {
+        return placesRepo.getPlaces(query, API_KEY);
     }
 
-    public LiveData<PlacesResponse> getNewPlacesResponseLiveData() {
-        this.placesResponseLiveData = placesRepo.getNewPlaces("beaches+in+mumbai", API_KEY);
-        return placesResponseLiveData;
+    public LiveData<PlacesResponse> getNewPlacesResponseLiveData(String query) {
+        return placesRepo.getNewPlaces(query, API_KEY);
+
     }
 
     public LiveData<PlacesResponse> getThingsToDoResponseLiveData(String query){

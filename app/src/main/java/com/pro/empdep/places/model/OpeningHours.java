@@ -11,6 +11,9 @@ public class OpeningHours implements Parcelable {
     @Expose
     public Boolean openNow;
 
+    public OpeningHours() {
+    }
+
     protected OpeningHours(Parcel in) {
         byte tmpOpenNow = in.readByte();
         openNow = tmpOpenNow == 0 ? null : tmpOpenNow == 1;

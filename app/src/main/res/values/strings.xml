@@ -82,5 +82,10 @@
     <string name="suggest_to_group">Suggest to group</string>
     <string name="opening_hours">Opening Hours</string>
     <string name="your_groups">Your Groups</string>
+    <string name="yes">yes</string>
+    <string name="you_already_voted">You already voted</string>
+    <string name="start_the_vote">start the vote</string>
+    <string name="search_in_your_wishlist">search in your wishlist</string>
+    <string name="search_in_your_trips">search in your trips</string>
 
 </resources>

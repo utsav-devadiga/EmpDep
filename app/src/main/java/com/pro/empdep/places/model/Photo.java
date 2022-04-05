@@ -17,6 +17,9 @@ public class Photo implements Parcelable {
     @Expose
     public Integer width;
 
+    public Photo() {
+    }
+
     protected Photo(Parcel in) {
         if (in.readByte() == 0) {
             height = null;

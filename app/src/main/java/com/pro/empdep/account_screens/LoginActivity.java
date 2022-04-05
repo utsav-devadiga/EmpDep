@@ -39,6 +39,7 @@ import com.pro.empdep.R;
 import com.pro.empdep.firebase.Credentials;
 import com.pro.empdep.firebase.RandomPhotoUrlGenerator;
 import com.pro.empdep.model.User;
+import com.pro.empdep.screens.UserPreference;
 import com.pro.empdep.viewmodel.UserViewModel;
 
 import java.util.concurrent.TimeUnit;
@@ -60,7 +61,6 @@ public class LoginActivity extends AppCompatActivity {
     LottieAnimationView otp_animation, number_animation;
     UserViewModel userViewModel;
     String device = "";
-
 
 
     @Override
@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
             if (phone_editText.getText().toString().isEmpty()) {
                 Snackbar snackbar = Snackbar
                         .make(main_layout, "Phone Number can't be empty", Snackbar.LENGTH_SHORT);
-                snackbar.setBackgroundTint(ContextCompat.getColor(getApplicationContext(),R.color.red));
+                snackbar.setBackgroundTint(ContextCompat.getColor(getApplicationContext(), R.color.red));
                 snackbar.show();
                 return;
             } else {
@@ -154,21 +154,21 @@ public class LoginActivity extends AppCompatActivity {
                 // for instance if the the phone number format is not valid.
                 Snackbar snackbar = Snackbar
                         .make(main_layout, "Something went wrong.", Snackbar.LENGTH_SHORT);
-                snackbar.setBackgroundTint(ContextCompat.getColor(getApplicationContext(),R.color.red));
+                snackbar.setBackgroundTint(ContextCompat.getColor(getApplicationContext(), R.color.red));
                 snackbar.show();
 
 
                 if (e instanceof FirebaseAuthInvalidCredentialsException) {
                     snackbar = Snackbar
                             .make(main_layout, "Something went wrong check the number", Snackbar.LENGTH_SHORT);
-                    snackbar.setBackgroundTint(ContextCompat.getColor(getApplicationContext(),R.color.red));
+                    snackbar.setBackgroundTint(ContextCompat.getColor(getApplicationContext(), R.color.red));
                     snackbar.show();
 
                 } else if (e instanceof FirebaseTooManyRequestsException) {
 
                     snackbar = Snackbar
                             .make(main_layout, "Too many request from this number", Snackbar.LENGTH_SHORT);
-                    snackbar.setBackgroundTint(ContextCompat.getColor(getApplicationContext(),R.color.red));
+                    snackbar.setBackgroundTint(ContextCompat.getColor(getApplicationContext(), R.color.red));
                     snackbar.show();
 
                 }
@@ -271,11 +271,10 @@ public class LoginActivity extends AppCompatActivity {
                                 db.collection(Credentials.USER).document(FirebaseAuth.getInstance().getCurrentUser().getUid()).update("device", device);
                             });
                         }
-                        homeIntent.putExtra("isNewUser", isNew);
-                        homeIntent.putExtra("phoneNumber", phone_number);
 
-                        startActivity(homeIntent);
-                        finish();
+                        UserPreference userPreference = new UserPreference(this,homeIntent);
+                        userPreference.showUserPref();
+
 
                     } else {
                         // Sign in failed, display a message and update the UI

@@ -12,10 +12,10 @@
         android:icon="@drawable/ic_heart"
         android:title="@string/wishlists" />
 
-    <item
-        android:id="@+id/tripsFragment"
-        android:icon="@drawable/ic_book"
-        android:title="@string/trips" />
+    <!--   <item
+           android:id="@+id/tripsFragment"
+           android:icon="@drawable/ic_book"
+           android:title="@string/trips" /> -->
     <item
         android:id="@+id/inboxFragment"
         android:icon="@drawable/ic_chat"
