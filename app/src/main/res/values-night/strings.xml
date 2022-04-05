@@ -73,4 +73,7 @@
     <string name="enter_message">Enter Message</string>
     <string name="send">send</string>
     <string name="new_group">New Group</string>
+    <string name="add_to_my_trip">Add to my trip</string>
+    <string name="suggest_to_group">Suggest to group</string>
+    <string name="opening_hours">Opening Hours</string>
 </resources>

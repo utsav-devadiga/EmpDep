@@ -54,6 +54,34 @@ public class PlacesRepo {
     }
 
 
+    public LiveData<PlacesResponse> getThingsToDoPlaces(String query, String key) {
+        final MutableLiveData<PlacesResponse> placesData = new MutableLiveData<>();
+        placesRequest.getPlaces(query, key)
+                .enqueue(new Callback<PlacesResponse>() {
+                    @Override
+                    public void onResponse(Call<PlacesResponse> call, Response<PlacesResponse> response) {
+                        Log.d(TAG, "onResponse response:: " + response);
+
+
+                        if (response.body() != null) {
+                            placesData.setValue(response.body());
+
+                            Log.d(TAG, "places status:: " + response.body().getStatus());
+                            Log.d(TAG, "places-list size:: " + response.body().getResults().size());
+                            token = response.body().getNextPageToken();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<PlacesResponse> call, Throwable t) {
+                        placesData.setValue(null);
+                    }
+                });
+
+        return placesData;
+    }
+
+
     public LiveData<PlacesResponse> getNewPlaces(String query, String key) {
 
         final MutableLiveData<PlacesResponse> placesData = new MutableLiveData<>();

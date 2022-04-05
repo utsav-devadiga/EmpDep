@@ -1,25 +1,41 @@
 package com.pro.empdep.screens;
 
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.pro.empdep.R;
+import com.pro.empdep.account_screens.HomeActivity;
+import com.pro.empdep.adapters.InboxAdapter;
 import com.pro.empdep.adapters.MessageAdapter;
 import com.pro.empdep.databinding.FragmentMessagesBinding;
 import com.pro.empdep.firebase.Credentials;
+import com.pro.empdep.model.Group;
 import com.pro.empdep.model.Message;
 import com.pro.empdep.viewmodel.MessagesViewModel;
 
@@ -34,6 +50,7 @@ public class MessagesFragment extends Fragment {
     MessagesViewModel viewModel;
     MessageAdapter adapter;
     ArrayList<Message> messagesList = new ArrayList<>();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public MessagesFragment() {
         // Required empty public constructor
@@ -72,6 +89,27 @@ public class MessagesFragment extends Fragment {
 
         });
 
+        //((AppCompatActivity) getActivity()).setSupportActionBar(binding.loginToolbar);
+        //setHasOptionsMenu(true);
+
+        binding.loginToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((AppCompatActivity) getActivity()).onBackPressed();
+            }
+        });
+
+        binding.loginToolbar.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.exit:
+                    //do sth here
+                    Toast.makeText(getContext(), "exit", Toast.LENGTH_SHORT).show();
+                case R.id.settings:
+                    //do sth here
+                    Toast.makeText(getContext(), "settings", Toast.LENGTH_SHORT).show();
+            }
+            return false;
+        });
 
         return view;
     }
@@ -110,6 +148,8 @@ public class MessagesFragment extends Fragment {
         } else {
             Toast.makeText(getContext(), "Something went wrong! id: " + groupId, Toast.LENGTH_SHORT).show();
         }
+
+
     }
 
     @Override
@@ -118,6 +158,20 @@ public class MessagesFragment extends Fragment {
         groupId = MessagesFragmentArgs.fromBundle(getArguments()).getGroupId();
         Log.d("GROUP", "onViewCreated: " + groupId);
         getMessage(groupId);
+
+        db.collection(Credentials.GROUP).document(groupId).get().addOnCompleteListener(task -> {
+            Group group = task.getResult().toObject(Group.class);
+            binding.loginToolbar.setTitle(group.getGroup_name());
+            Glide.with(getContext()).asDrawable()
+                    .load(group.getGroup_picture())
+                    .into(new SimpleTarget<Drawable>(80,80) {
+                        @Override
+                        public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                            binding.loginToolbar.setLogo(resource);
+                        }
+                    });
+
+        });
 
     }
 }

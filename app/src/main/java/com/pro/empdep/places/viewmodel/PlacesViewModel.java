@@ -16,11 +16,13 @@ public class PlacesViewModel extends AndroidViewModel {
 
     private PlacesRepo placesRepo;
     private LiveData<PlacesResponse> placesResponseLiveData;
+    private LiveData<PlacesResponse> thingsToDoResponseLiveData;
 
     public PlacesViewModel(@NonNull Application application) {
         super(application);
         placesRepo = new PlacesRepo();
         this.placesResponseLiveData = placesRepo.getPlaces("beaches+in+mumbai", API_KEY);
+
 
     }
 
@@ -31,5 +33,9 @@ public class PlacesViewModel extends AndroidViewModel {
     public LiveData<PlacesResponse> getNewPlacesResponseLiveData() {
         this.placesResponseLiveData = placesRepo.getNewPlaces("beaches+in+mumbai", API_KEY);
         return placesResponseLiveData;
+    }
+
+    public LiveData<PlacesResponse> getThingsToDoResponseLiveData(String query){
+        return placesRepo.getThingsToDoPlaces(query,API_KEY);
     }
 }

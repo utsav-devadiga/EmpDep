@@ -22,7 +22,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/primary"
-                app:logo="@drawable/ic_book"
                 app:menu="@menu/messages_menu"
                 app:navigationIcon="@drawable/ic_back"
                 app:title="test group"
