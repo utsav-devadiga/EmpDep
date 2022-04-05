@@ -85,7 +85,14 @@
         android:layout_below="@id/inbox_user_time"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="30dp"
-       android:background="@drawable/read_item"
-        />
+        android:background="@drawable/read_item" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toEndOf="@id/inbox_user_image_layout"
+        android:layout_below="@id/inbox_user_image_layout"
+        android:background="@color/grey_gb" />
 
 </RelativeLayout>

@@ -32,6 +32,8 @@
     <color name="colorSurfaceShade">#B2F5F0</color>
     <color name="colorSurfaceShade1">#D4FAF7</color>
     <color name="colorOnSurfaceAlpha_87">#A8EDE7</color>
+    <color name="transculent">#80000000</color>
+    <color name="non_active_indicator">#D4FAF7</color>
 
 
 </resources>

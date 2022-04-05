@@ -23,7 +23,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.FitCenter;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.google.android.material.card.MaterialCardView;
 import com.pro.empdep.R;
+import com.pro.empdep.places.interfaces.PlacesDetails;
 import com.pro.empdep.places.model.PlacesModel;
 
 import java.io.IOException;
@@ -35,10 +37,13 @@ public class PlacesApiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     View view;
     Context context;
     ArrayList<PlacesModel> placesArrayList;
+    PlacesDetails placesDetails;
 
-    public PlacesApiAdapter(Context context, ArrayList<PlacesModel> placesArrayList) {
+    public PlacesApiAdapter(Context context, ArrayList<PlacesModel> placesArrayList, PlacesDetails placesDetails
+    ) {
         this.context = context;
         this.placesArrayList = placesArrayList;
+        this.placesDetails = placesDetails;
     }
 
     @NonNull
@@ -78,7 +83,9 @@ public class PlacesApiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             e.printStackTrace();
         }
 
-
+        ((PlacesApiViewHolder) holder).places_item_main.setOnClickListener(view -> {
+            placesDetails.onClickPlace(placesArrayList.get(position).getPlaceId());
+        });
 
     }
 
@@ -92,6 +99,7 @@ public class PlacesApiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         ImageView placeImage;
         TextView placeName, placesLocation;
         LottieAnimationView wishListAnimation;
+        MaterialCardView places_item_main;
 
         public PlacesApiViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -99,6 +107,7 @@ public class PlacesApiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             placeName = itemView.findViewById(R.id.place_name);
             placesLocation = itemView.findViewById(R.id.place_location);
             wishListAnimation = itemView.findViewById(R.id.wishListAnimation);
+            places_item_main = itemView.findViewById(R.id.places_item_main);
 
         }
     }

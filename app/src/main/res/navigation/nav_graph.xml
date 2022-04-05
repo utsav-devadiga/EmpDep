@@ -75,7 +75,11 @@
         android:id="@+id/placesDetailsFragment"
         android:name="com.pro.empdep.screens.PlacesDetailsFragment"
         android:label="fragment_places_details"
-        tools:layout="@layout/fragment_places_details" />
+        tools:layout="@layout/fragment_places_details" >
+        <argument
+            android:name="placeId"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/addFriendFragment"
         android:name="com.pro.empdep.screens.AddFriendFragment"

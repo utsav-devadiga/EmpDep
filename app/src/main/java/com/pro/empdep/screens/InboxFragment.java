@@ -142,7 +142,7 @@ public class InboxFragment extends Fragment implements MessageOpener {
             adapter = new InboxAdapter(groups, getContext(), this);
             binding.inboxCycle.setAdapter(adapter);
 
-            binding.inboxCycle.addItemDecoration(new DividerItemDecoration(requireContext(), LinearLayout.VERTICAL));
+
         });
     }
 

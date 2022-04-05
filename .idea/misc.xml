@@ -9,6 +9,7 @@
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/cardview_button_bg.xml" value="0.174" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/continue_chat.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/custom_rating_bar_details.xml" value="0.121" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/default_dot.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/dialog_bottom_shape_view.xml" value="0.3675" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/dialog_shape_view.xml" value="0.174" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/ic_account.xml" value="0.311" />
@@ -21,11 +22,14 @@
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/ic_location.xml" value="0.26296296296296295" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/ic_search.xml" value="0.3165" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/ic_travel.xml" value="0.221" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/indicator_selector.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/information_decorative.xml" value="0.22083333333333333" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/places_details_image_item.xml" value="0.2445" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/profile_shaper.xml" value="0.18981481481481483" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/read_item.xml" value="0.3675" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/reject.xml" value="0.325" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/searchview_shape_view.xml" value="0.1425925925925926" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/selected_dot.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/sign_in_btn.xml" value="0.174" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/textinputbordercolor.xml" value="0.174" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/activity_home.xml" value="0.25" />
@@ -60,12 +64,13 @@
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/group_creation_bottom_sheet.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/group_request_fragment_item.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/group_request_item.xml" value="0.36666666666666664" />
-        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_inbox.xml" value="0.5" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_inbox.xml" value="0.67" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_places_api.xml" value="0.67" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/message_item_continue_incoming_normal.xml" value="1.0" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/message_item_incoming_normal.xml" value="0.67" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/message_item_normal.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/message_item_outgoing_normal.xml" value="0.67" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/places_image_item.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/places_item.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/search_friend_item.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/search_friend_item_accept_reject.xml" value="0.36666666666666664" />

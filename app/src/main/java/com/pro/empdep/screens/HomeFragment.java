@@ -25,13 +25,16 @@ import android.widget.ScrollView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.pro.empdep.R;
 import com.pro.empdep.account_screens.HomeActivity;
 import com.pro.empdep.adapters.PlaceAdapter;
 import com.pro.empdep.databinding.FragmentHomeBinding;
+import com.pro.empdep.firebase.Credentials;
 import com.pro.empdep.model.Places;
 import com.pro.empdep.places.adapters.PlacesApiAdapter;
+import com.pro.empdep.places.interfaces.PlacesDetails;
 import com.pro.empdep.places.model.PlacesModel;
 import com.pro.empdep.places.viewmodel.PlacesViewModel;
 import com.pro.empdep.viewmodel.UserViewModel;
@@ -39,7 +42,7 @@ import com.pro.empdep.viewmodel.UserViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements PlacesDetails {
 
 
     View v;
@@ -86,16 +89,16 @@ public class HomeFragment extends Fragment {
 
 
         List<Places> placesList = new ArrayList<>();
-        placesList.add(new Places("Taj Mahal", R.drawable.place_1, "₹2,500", "4.5", "Agra,India"));
-        placesList.add(new Places("Beaches", R.drawable.place, "₹500", "4.7", "Goa,India"));
-        placesList.add(new Places("Sub-Urban", R.drawable.city, "₹500", "4.0", "Mumbai,India"));
-        placesList.add(new Places("Hills", R.drawable.hills, "₹12,500", "5.0", "India"));
+        placesList.add(new Places("Monuments", R.drawable.place_1, "₹2,500", "4.5", "Agra,India"));
+        placesList.add(new Places("Beaches", R.drawable.place, "₹1500", "4.7", "Goa,India"));
+        placesList.add(new Places("Sub-Urban", R.drawable.city, "₹800", "4.0", "Mumbai,India"));
+        placesList.add(new Places("Hills", R.drawable.hills, "₹7,500", "5.0", "India"));
         placesList.add(new Places("Forest", R.drawable.forest, "₹1,500", "4.5", "Pune,India"));
 
         PlaceAdapter adapter = new PlaceAdapter(placesList);
         placesRecyclerView.setAdapter(adapter);
 
-        placesApiAdapter = new PlacesApiAdapter(getContext(), placesArrayList);
+        placesApiAdapter = new PlacesApiAdapter(getContext(), placesArrayList, this);
         placesApiRecyclerview.setHasFixedSize(true);
         placesApiRecyclerview.setAdapter(placesApiAdapter);
         getPlaces();
@@ -119,7 +122,6 @@ public class HomeFragment extends Fragment {
 
 
         });
-
 
 
         return v;
@@ -151,4 +153,15 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onClickPlace(String place_id) {
+        //to navigate
+        NavHostFragment navHostFragment = (NavHostFragment) requireActivity().getSupportFragmentManager()
+                .findFragmentById(R.id.nav_host_fragment);
+        navController = navHostFragment.getNavController();
+
+        NavDirections actions = HomeFragmentDirections.actionHomeFragmentToPlacesDetailsFragment(place_id);
+        navController.navigate(actions);
+
+    }
 }
