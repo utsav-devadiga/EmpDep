@@ -399,9 +399,9 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public int getItemViewType(int position) {
         if (messageList.get(position).getMessage_type() == Credentials.MESSAGES_NORMAL && current_user_id.equals(messageList.get(position).getSent_by())) {
             return 1;
-        } else if (position != 0 && messageList.get(position).getSent_by().equals(messageList.get(position - 1).getSent_by())) {
+        }  if (position != 0 && messageList.get(position).getSent_by().equals(messageList.get(position - 1).getSent_by()) && messageList.get(position).getMessage_type() == Credentials.MESSAGES_NORMAL) {
             return 2;
-        } else if (messageList.get(position).getMessage_type() == Credentials.MESSAGES_PLACE_VOTE || messageList.get(position).getMessage_type() == Credentials.MESSAGES_PLACE_SUGGESTION) {
+        }  if (messageList.get(position).getMessage_type() == Credentials.MESSAGES_PLACE_VOTE || messageList.get(position).getMessage_type() == Credentials.MESSAGES_PLACE_SUGGESTION) {
             if (!current_user_id.equals(messageList.get(position).getSent_by())) {
                 return 3;
             } else {
