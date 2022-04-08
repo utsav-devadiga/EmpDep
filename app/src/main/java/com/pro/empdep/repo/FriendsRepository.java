@@ -116,25 +116,27 @@ public class FriendsRepository {
     }
 
     public LiveData<List<Group>> getInboxList(List<String> groupList) {
-        Log.d(TAG, "getInboxList: " + groupList.size());
+
         final MutableLiveData<List<Group>> inboxList = new MutableLiveData<>();
         final ArrayList<Group> subGroupList = new ArrayList<>();
-        for (String groupid : groupList) {
-            Log.d(TAG, "Selected group: " + groupid);
-            db.collection(Credentials.GROUP).document(groupid).get().addOnCompleteListener(task -> {
-                Log.d(TAG, "getting group details: " + task.getResult().toObject(Group.class).toString());
-                if (task.isSuccessful()) {
-                    Group group = task.getResult().toObject(Group.class);
-                    subGroupList.add(group);
-                    Log.d(TAG, "added group details of " + groupid);
-                    inboxList.postValue(subGroupList);
-                } else {
-                    Log.e(TAG, "getInboxList: error");
-                    inboxList.setValue(null);
-                }
-            });
-            Log.d(TAG, "posted in view-model");
-            inboxList.postValue(subGroupList);
+        if (groupList != null) {
+            for (String groupid : groupList) {
+                Log.d(TAG, "Selected group: " + groupid);
+                db.collection(Credentials.GROUP).document(groupid).get().addOnCompleteListener(task -> {
+                    Log.d(TAG, "getting group details: " + task.getResult().toObject(Group.class).toString());
+                    if (task.isSuccessful()) {
+                        Group group = task.getResult().toObject(Group.class);
+                        subGroupList.add(group);
+                        Log.d(TAG, "added group details of " + groupid);
+                        inboxList.postValue(subGroupList);
+                    } else {
+                        Log.e(TAG, "getInboxList: error");
+                        inboxList.setValue(null);
+                    }
+                });
+                Log.d(TAG, "posted in view-model");
+                inboxList.postValue(subGroupList);
+            }
         }
         return inboxList;
 

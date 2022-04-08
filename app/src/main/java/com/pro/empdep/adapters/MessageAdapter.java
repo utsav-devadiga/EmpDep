@@ -147,6 +147,11 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                                 ((IncomingSuggestedViewHolder) holder).startvote.setVisibility(View.VISIBLE);
                                 ((IncomingSuggestedViewHolder) holder).yes.setVisibility(View.GONE);
                                 ((IncomingSuggestedViewHolder) holder).no.setVisibility(View.GONE);
+                            }else{
+                                ((IncomingSuggestedViewHolder) holder).startvote.setVisibility(View.GONE);
+                                ((IncomingSuggestedViewHolder) holder).yes.setVisibility(View.GONE);
+                                ((IncomingSuggestedViewHolder) holder).no.setVisibility(View.GONE);
+                                ((IncomingSuggestedViewHolder) holder).voted.setVisibility(View.GONE);
                             }
                         }
                     });
@@ -275,6 +280,11 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                                 ((OutGoingSuggestedViewHolder) holder).startvote.setVisibility(View.VISIBLE);
                                 ((OutGoingSuggestedViewHolder) holder).yes.setVisibility(View.GONE);
                                 ((OutGoingSuggestedViewHolder) holder).no.setVisibility(View.GONE);
+                            }else{
+                                ((OutGoingSuggestedViewHolder) holder).startvote.setVisibility(View.GONE);
+                                ((OutGoingSuggestedViewHolder) holder).yes.setVisibility(View.GONE);
+                                ((OutGoingSuggestedViewHolder) holder).no.setVisibility(View.GONE);
+                                ((OutGoingSuggestedViewHolder) holder).voted.setVisibility(View.GONE);
                             }
                         }
                     });

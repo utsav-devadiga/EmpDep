@@ -121,10 +121,18 @@ public class InboxFragment extends Fragment implements MessageOpener {
     private void getTotalPendingRequest() {
         viewModel.getCurrentUser().observe(getViewLifecycleOwner(), user -> {
 
-            SpannableString content = new SpannableString("New Request (" + String.valueOf(user.getFriendReq().size() + user.getGroupReq().size()) + ")");
-            content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
-            binding.newInboxRequest.setText(content);
-            getInboxList(user);
+           //todo error when fresh person open because of list size null
+            if (user.getFriendReq() != null && user.getGroupReq() != null) {
+                SpannableString content = new SpannableString("New Request (" + String.valueOf(user.getFriendReq().size() + user.getGroupReq().size()) + ")");
+                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                binding.newInboxRequest.setText(content);
+                getInboxList(user);
+            }else{
+                SpannableString content = new SpannableString("New Request (0)");
+                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                binding.newInboxRequest.setText(content);
+                getInboxList(user);
+            }
         });
     }
 
