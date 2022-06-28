@@ -9,6 +9,7 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class PlacesApiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     WishLists wishLists;
     FirebaseFirestore db;
     FirebaseAuth auth;
+    Geocoder geocoder;
 
     public PlacesApiAdapter(Context context, ArrayList<PlacesModel> placesArrayList, PlacesDetails placesDetails,
                             WishLists wishLists) {
@@ -54,6 +56,7 @@ public class PlacesApiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         this.wishLists = wishLists;
         db = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
+        geocoder = new Geocoder(context, Locale.getDefault());
     }
 
     @NonNull
@@ -66,7 +69,7 @@ public class PlacesApiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         holder.setIsRecyclable(false);
-        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+
         List<Address> addresses = null;
         try {
             addresses = geocoder.getFromLocation(placesArrayList.get(position).getGeometry().getLocation().getLat(), placesArrayList.get(position).getGeometry().getLocation().getLng(), 1);
@@ -79,12 +82,13 @@ public class PlacesApiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(((PlacesApiViewHolder) holder).placeImage);
 
-            String cityName = addresses.get(0).getSubLocality();
-            String stateName = addresses.get(0).getLocality();
+            String cityName = (addresses.get(0).getSubLocality() != null) ? addresses.get(0).getSubLocality() + ", " : ""; //res=(num1>num2) ? (num1+num2):(num1-num2)
+            String stateName = (addresses.get(0).getLocality() != null) ? addresses.get(0).getLocality() : "";
             String countryName = addresses.get(0).getCountryName();
-            ((PlacesApiViewHolder) holder).placeName.setText(placesArrayList.get(position).getName());
-            ((PlacesApiViewHolder) holder).placesLocation.setText(cityName + ", " + stateName);
 
+
+            ((PlacesApiViewHolder) holder).placeName.setText(placesArrayList.get(position).getName());
+            ((PlacesApiViewHolder) holder).placesLocation.setText(cityName + stateName);
             db.collection(Credentials.USER).document(auth.getCurrentUser().getUid()).collection(Credentials.WISH).document(placesArrayList.get(position).getPlaceId()).get().addOnCompleteListener(task -> {
                 if (task.getResult().exists()) {
                     ((PlacesApiViewHolder) holder).wishListAnimation.setMaxFrame(100);
@@ -101,6 +105,7 @@ public class PlacesApiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             });
 
         } catch (Exception e) {
+            Log.e("ADAPTER", "onBindViewHolder: ", e);
             e.printStackTrace();
         }
 

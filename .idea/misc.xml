@@ -34,7 +34,7 @@
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/selected_dot.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/sign_in_btn.xml" value="0.174" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/drawable/textinputbordercolor.xml" value="0.174" />
-        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/activity_home.xml" value="0.18888888888888888" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/activity_no_internet.xml" value="0.33" />
@@ -56,7 +56,7 @@
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_places_details.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_profile.xml" value="0.16" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_trips.xml" value="0.35733695652173914" />
-        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_user_info.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_user_info.xml" value="0.21910112359550563" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/fragment_wish_list.xml" value="0.35733695652173914" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/friend_bottom_sheet.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/friend_item.xml" value="0.36666666666666664" />
@@ -70,7 +70,7 @@
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/group_selection_bottom_sheet.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_inbox.xml" value="0.67" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_places_api.xml" value="0.18" />
-        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_places_api_wishlist_trips.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_places_api_wishlist_trips.xml" value="0.28921568627450983" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_suggest_place_outgoing.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/item_suggested_place_incoming.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/EmpDep/app/src/main/res/layout/message_item_continue_incoming_normal.xml" value="1.0" />

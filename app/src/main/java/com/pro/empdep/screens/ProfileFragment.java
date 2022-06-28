@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 import com.bumptech.glide.Glide;
@@ -78,18 +79,17 @@ public class ProfileFragment extends Fragment {
 
 
         userViewModel.getUserFromFirebase();
-        userViewModel.mUser.observe(getViewLifecycleOwner(), new Observer<User>() {
-            @Override
-            public void onChanged(User user) {
-                Log.d(TAG, "onChanged: " + user.toString());
+        userViewModel.mUser.observe(getViewLifecycleOwner(), user -> {
+            Log.d(TAG, "onChanged: " + user.toString());
 
-                Glide.with(requireContext())
-                        .load(user.getPhotoUrl())
-                        .transform(new FitCenter(), new RoundedCorners(28))
-                        .transition(DrawableTransitionOptions.withCrossFade())
-                        .into(binding.profileImage);
+            Glide.with(requireContext())
+                    .load(user.getPhotoUrl())
+                    .transform(new FitCenter(), new RoundedCorners(28))
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .into(binding.profileImage);
 
-            }
+            binding.userName.setText(user.getUserName());
+
         });
 
 

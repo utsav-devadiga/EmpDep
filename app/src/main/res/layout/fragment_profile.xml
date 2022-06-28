@@ -8,6 +8,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/image_layout"
         android:layout_width="145dp"
         android:layout_height="145dp"
         android:layout_centerInParent="true"
@@ -25,7 +26,15 @@
 
     </RelativeLayout>
 
-
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+        tools:text="@tools:sample/full_names" />
 
     <Button
         android:id="@+id/logout"
