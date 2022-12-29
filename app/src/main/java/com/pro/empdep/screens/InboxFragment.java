@@ -111,23 +111,20 @@ public class InboxFragment extends Fragment implements MessageOpener {
         getTotalPendingRequest();
 
 
-
-
         return view;
     }
-
 
 
     private void getTotalPendingRequest() {
         viewModel.getCurrentUser().observe(getViewLifecycleOwner(), user -> {
 
-           //todo error when fresh person open because of list size null
+            //todo error when fresh person open because of list size null
             if (user.getFriendReq() != null && user.getGroupReq() != null) {
                 SpannableString content = new SpannableString("New Request (" + String.valueOf(user.getFriendReq().size() + user.getGroupReq().size()) + ")");
                 content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                 binding.newInboxRequest.setText(content);
                 getInboxList(user);
-            }else{
+            } else {
                 SpannableString content = new SpannableString("New Request (0)");
                 content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                 binding.newInboxRequest.setText(content);
@@ -149,6 +146,12 @@ public class InboxFragment extends Fragment implements MessageOpener {
             });
             adapter = new InboxAdapter(groups, getContext(), this);
             binding.inboxCycle.setAdapter(adapter);
+
+            if (groups.isEmpty()) {
+                binding.noData.setVisibility(View.VISIBLE);
+            } else {
+                binding.noData.setVisibility(View.GONE);
+            }
 
 
         });
@@ -175,7 +178,6 @@ public class InboxFragment extends Fragment implements MessageOpener {
         NavDirections actions = InboxFragmentDirections.actionInboxFragmentToMessagesFragment(id);
         navController.navigate(actions);
         db.collection(Credentials.GROUP).document(id).update("seen_by", FieldValue.arrayUnion(mAuth.getCurrentUser().getUid()));
-
 
 
     }

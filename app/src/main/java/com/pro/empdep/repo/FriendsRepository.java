@@ -128,14 +128,14 @@ public class FriendsRepository {
                         Group group = task.getResult().toObject(Group.class);
                         subGroupList.add(group);
                         Log.d(TAG, "added group details of " + groupid);
-                        inboxList.postValue(subGroupList);
+                        inboxList.setValue(subGroupList);
                     } else {
                         Log.e(TAG, "getInboxList: error");
                         inboxList.setValue(null);
                     }
                 });
                 Log.d(TAG, "posted in view-model");
-                inboxList.postValue(subGroupList);
+                inboxList.setValue(subGroupList);
             }
         }
         return inboxList;

@@ -75,6 +75,12 @@ public class WishListFragment extends Fragment implements PlacesDetails {
                 placesList.clear();
                 placesList.addAll(task.getResult().toObjects(PlacesModel.class));
                 adapter.notifyItemRangeChanged(0, placesList.size());
+
+                if (placesList.isEmpty()) {
+                    binding.noData.setVisibility(View.VISIBLE);
+                } else {
+                    binding.noData.setVisibility(View.GONE);
+                }
             }
         });
 

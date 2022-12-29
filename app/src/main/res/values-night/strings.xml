@@ -81,4 +81,5 @@
     <string name="start_the_vote">start the vote</string>
     <string name="search_in_your_wishlist">search in your wishlist</string>
     <string name="search_in_your_trips">search in your trips</string>
+    <string name="nothing_found">Nothing to show here</string>
 </resources>

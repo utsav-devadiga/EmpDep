@@ -56,6 +56,13 @@ public class FriendRequestFragmentItem extends Fragment {
             viewModel.getCurrentUser().observe(getViewLifecycleOwner(), user -> {
                 adapter = new FriendRequestAdapter(friendRequest, getContext(), user);
                 binding.friendRequestCycle.setAdapter(adapter);
+
+                if (friendRequest.isEmpty()) {
+                    binding.noData.setVisibility(View.VISIBLE);
+                } else {
+                    binding.noData.setVisibility(View.GONE);
+                }
+
             });
 
         });

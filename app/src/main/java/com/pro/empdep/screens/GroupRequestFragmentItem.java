@@ -63,6 +63,12 @@ public class GroupRequestFragmentItem extends Fragment {
             adapter = new GroupRequestAdapter(groupRequest, getContext());
             binding.groupInviteCycle.setAdapter(adapter);
 
+            if (groupRequest.isEmpty()) {
+                binding.noData.setVisibility(View.VISIBLE);
+            } else {
+                binding.noData.setVisibility(View.GONE);
+            }
+
         });
         return view;
     }
