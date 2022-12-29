@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "904512055427",
-    "project_id": "employeetest-99645",
-    "storage_bucket": "employeetest-99645.appspot.com"
+    "project_number": "1095577326152",
+    "project_id": "travelo-447a3",
+    "storage_bucket": "travelo-447a3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:904512055427:android:b8e96a8f80175a74e093b6",
+        "mobilesdk_app_id": "1:1095577326152:android:8302d87a3d5eb3df9dfe7d",
         "android_client_info": {
           "package_name": "com.pro.empdep"
         }
       },
       "oauth_client": [
         {
-          "client_id": "904512055427-hdscrbn3m45krqt4khlck5knej233s9b.apps.googleusercontent.com",
+          "client_id": "1095577326152-t5bro16fdv0u4ufn9oh46acuoqvqlqkb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.pro.empdep",
-            "certificate_hash": "a55b85d753448c5a5982ab25910135d2ea9167db"
+            "certificate_hash": "97079ee68b77974826a3723caacea4a64dbb412f"
           }
         },
         {
-          "client_id": "904512055427-10ata1fng9r52626pialfmpm76lt4a0t.apps.googleusercontent.com",
+          "client_id": "1095577326152-okhvir4gu44djom2ssfrl0cevcfl5dvc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBClkXTQX6FfmelkuusvYyRIG7N6lfE7Yo"
+          "current_key": "AIzaSyB_VRGLH6R1WYHA3-O3RsxsA-pYGd4PmFc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "904512055427-10ata1fng9r52626pialfmpm76lt4a0t.apps.googleusercontent.com",
+              "client_id": "1095577326152-okhvir4gu44djom2ssfrl0cevcfl5dvc.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

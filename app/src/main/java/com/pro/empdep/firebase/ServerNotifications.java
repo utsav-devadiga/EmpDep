@@ -1,5 +1,6 @@
 package com.pro.empdep.firebase;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -68,6 +69,7 @@ public class ServerNotifications extends FirebaseMessagingService {
                 new NotificationCompat.Builder(this, channelId)
                         .setSmallIcon(R.drawable.ic_book)
                         .setContentTitle(title)
+                        .setPriority(Notification.PRIORITY_MAX)
                         .setContentText(messageBody)
                         .setAutoCancel(true)
                         .setSound(defaultSoundUri)

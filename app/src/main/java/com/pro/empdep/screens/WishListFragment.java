@@ -74,7 +74,7 @@ public class WishListFragment extends Fragment implements PlacesDetails {
             if (task.isSuccessful()) {
                 placesList.clear();
                 placesList.addAll(task.getResult().toObjects(PlacesModel.class));
-                adapter.notifyDataSetChanged();
+                adapter.notifyItemRangeChanged(0, placesList.size());
             }
         });
 
