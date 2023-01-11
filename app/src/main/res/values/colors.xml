@@ -15,6 +15,7 @@
     <color name="primary_variant">#ECFFFD</color>
     <color name="grey">#919191</color>
     <color name="mainTextColor">#092C4C</color>
+    <color name="textcolorsecondary">#ABB3BB</color>
     <color name="mainScreenBg">#F8F8F8</color>
     <color name="primaryText">#ABB3BB</color>
     <color name="secondaryText">#737C84</color>

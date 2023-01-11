@@ -51,14 +51,14 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Lucas" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_gchat_message_other"
+        style="@style/Widget.App.CardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/text_gchat_user_other"
         android:layout_toEndOf="@id/image_gchat_profile_other"
         app:cardBackgroundColor="#eef1f6"
-        app:cardCornerRadius="12dp"
         app:cardElevation="0dp"
         app:cardPreventCornerOverlap="false"
         app:cardUseCompatPadding="true"
@@ -72,11 +72,12 @@
             android:orientation="vertical">
 
 
-            <ImageView
-                android:scaleType="centerCrop"
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/place_image_suggest"
                 android:layout_width="match_parent"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                app:shapeAppearance="@style/ShapeAppearanceOverlay.App.SuggestedPlacesInComing" />
 
             <TextView
                 android:id="@+id/text_gchat_message_other"
@@ -104,7 +105,7 @@
                 tools:text="Andheri mumbai" />
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 
     <TextView

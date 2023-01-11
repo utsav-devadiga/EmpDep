@@ -6,6 +6,7 @@
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="android:textColorPrimary">@color/mainTextColor</item>
+        <item name="android:textColorSecondary">@color/textcolorsecondary</item>
         <item name="colorSurfaceVariant">@color/primary_variant</item>
         <item name="colorOnSurface">@color/primary_start_linear</item>
         <item name="colorPrimaryContainer">@color/primary_variant</item>
@@ -27,6 +28,7 @@
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="android:textColorPrimary">@color/mainTextColor</item>
+        <item name="android:textColorSecondary">@color/textcolorsecondary</item>
         <item name="colorSurfaceVariant">@color/primary_variant</item>
         <item name="colorOnSurface">@color/primary_start_linear</item>
         <item name="colorPrimaryContainer">@color/primary_variant</item>
@@ -78,6 +80,15 @@
         <item name="cornerSizeBottomRight">12dp</item>
     </style>
 
+    <style name="ShapeAppearance.App.MediumComponentV2" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">12dp</item>
+        <item name="cornerSizeBottomLeft">12dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomRight">12dp</item>
+
+    </style>
+
 
     <style name="TabHeaders" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">14sp</item>
@@ -89,8 +100,42 @@
         <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
     </style>
 
+    <style name="Widget.App.CardViewV2" parent="Widget.Material3.CardView.Elevated">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Card</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponentV2</item>
+    </style>
+
     <style name="ThemeOverlay.App.Card" parent="">
 
+    </style>
+
+
+    <style name="ShapeAppearanceOverlay.App.SuggestedPlacesOutGoing" parent="Widget.MaterialComponents.ShapeableImageView">
+
+
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerFamilyTopLeft">rounded</item>
+
+
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeTopLeft">12dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.SuggestedPlacesInComing" parent="Widget.MaterialComponents.ShapeableImageView">
+
+
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerFamilyTopLeft">rounded</item>
+
+
+        <item name="cornerSizeTopRight">12dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
     </style>
 
 </resources>

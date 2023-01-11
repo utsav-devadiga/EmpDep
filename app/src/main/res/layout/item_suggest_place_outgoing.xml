@@ -9,13 +9,14 @@
     android:layout_marginEnd="0dp">
 
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_gchat_message_other"
+        style="@style/Widget.App.CardViewV2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:clipChildren="true"
         app:cardBackgroundColor="@color/primary"
-        app:cardCornerRadius="12dp"
         app:cardElevation="0dp"
         app:cardPreventCornerOverlap="false"
         app:cardUseCompatPadding="true">
@@ -27,8 +28,9 @@
             android:orientation="vertical">
 
 
-            <ImageView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/place_image_suggest"
+                app:shapeAppearance="@style/ShapeAppearanceOverlay.App.SuggestedPlacesOutGoing"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop" />
@@ -59,7 +61,7 @@
                 tools:text="Andheri mumbai" />
         </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 
     <TextView

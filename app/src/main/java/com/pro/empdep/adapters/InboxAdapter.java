@@ -63,41 +63,46 @@ public class InboxAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
         if (!inboxList.isEmpty()) {
-        ((InboxViewHolder) holder).groupName.setText(inboxList.get(position).getGroup_name());
+            ((InboxViewHolder) holder).groupName.setText(inboxList.get(position).getGroup_name());
 
-        Glide.with(context)
-                .load(inboxList.get(position).getGroup_picture())
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(((InboxViewHolder) holder).groupPic);
+            Glide.with(context)
+                    .load(inboxList.get(position).getGroup_picture())
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .into(((InboxViewHolder) holder).groupPic);
 
 //        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm", Locale.ENGLISH);
-        ((InboxViewHolder) holder).timestamp.setText(getDate(Long.parseLong(inboxList.get(position).getTimestamp())));
+            ((InboxViewHolder) holder).timestamp.setText(getDate(Long.parseLong(inboxList.get(position).getTimestamp())));
 
-        ((InboxViewHolder) holder).message_item.setOnClickListener(v -> {
-            messageOpener.onGroupClick(inboxList.get(position).getGroup_id());
-        });
-        if (inboxList.get(position).getLast_message_sent_by() != null && !inboxList.get(position).getLast_message_sent_by().equals("")) {
-            db.collection(Credentials.USER).document(inboxList.get(position).getLast_message_sent_by()).get().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    User user = task.getResult().toObject(User.class);
-                    if (user != null) {
-                        ((InboxViewHolder) holder).lastMessage.setText(user.getUserName() + ": " + inboxList.get(position).getLast_message());
-                    } else {
-                        ((InboxViewHolder) holder).lastMessage.setText(inboxList.get(position).getLast_message());
-                    }
-
-                }
+            ((InboxViewHolder) holder).message_item.setOnClickListener(v -> {
+                messageOpener.onGroupClick(inboxList.get(position).getGroup_id());
             });
-        } else {
-            ((InboxViewHolder) holder).lastMessage.setText(inboxList.get(position).getLast_message());
-        }
+            if (inboxList.get(position).getLast_message_sent_by() != null && !inboxList.get(position).getLast_message_sent_by().equals("")) {
+                db.collection(Credentials.USER).document(inboxList.get(position).getLast_message_sent_by()).get().addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        User user = task.getResult().toObject(User.class);
+                        if (user != null) {
+                            if (user.getId().equalsIgnoreCase(mAuth.getCurrentUser().getUid())) {
+                                ((InboxViewHolder) holder).lastMessage.setText("You: " + inboxList.get(position).getLast_message());
+                            } else {
+                                ((InboxViewHolder) holder).lastMessage.setText(user.getUserName() + ": " + inboxList.get(position).getLast_message());
+                            }
 
-        if (inboxList.get(position).getSeen_by() != null && inboxList.get(position).getSeen_by().contains(mAuth.getCurrentUser().getUid())) {
-            ((InboxViewHolder) holder).read.setVisibility(View.GONE);
-        } else {
-            ((InboxViewHolder) holder).read.setVisibility(View.VISIBLE);
+                        } else {
+                            ((InboxViewHolder) holder).lastMessage.setText(inboxList.get(position).getLast_message());
+                        }
+
+                    }
+                });
+            } else {
+                ((InboxViewHolder) holder).lastMessage.setText(inboxList.get(position).getLast_message());
+            }
+
+            if (inboxList.get(position).getSeen_by() != null && inboxList.get(position).getSeen_by().contains(mAuth.getCurrentUser().getUid())) {
+                ((InboxViewHolder) holder).read.setVisibility(View.GONE);
+            } else {
+                ((InboxViewHolder) holder).read.setVisibility(View.VISIBLE);
+            }
         }
-    }
     }
 
     private String getDate(long time) {
