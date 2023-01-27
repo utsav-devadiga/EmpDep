@@ -51,7 +51,7 @@ public class TicketView extends View {
     }
 
     @Retention(RetentionPolicy.SOURCE)
-    @IntDef({CornerType.NORMAL, CornerType.ROUNDED})
+    @IntDef({CornerType.NORMAL, CornerType.ROUNDED,CornerType.SCALLOP})
     public @interface CornerType {
         int NORMAL = 0;
         int ROUNDED = 1;
